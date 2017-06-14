@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  resources :blog, only: %w(show)
+  resources :blogs, only: %w(show) do
+    resources :posts, only: :show
+  end
 end

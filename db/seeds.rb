@@ -1,10 +1,10 @@
-blog = Blog.create(name: 'Super Awesome Blog!')
-
-stan = Author.create(first_name: 'Stan', last_name: 'Marsh')
-kyle = Author.create(first_name: 'Kyle', last_name: 'Broflovski')
-
-authors = [stan, kyle]
+blog = Blog.create(name: Faker::Book.title)
 
 20.times do
-  Post.create(blog: blog, author: authors.sample)
+  Author.create(first_name: Faker::Name.first_name,
+                last_name: Faker::Name.last_name)
+  Post.create(title: Faker::Book.title,
+              content: Faker::Lorem.paragraph(5, false, 3),
+              blog: blog,
+              author: Author.all.sample)
 end
